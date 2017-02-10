@@ -1,0 +1,188 @@
+@media screen {
+	body {
+		font-family: arial,helvetica,sans-serif;
+	}
+}
+
+@media print {
+	body {
+		font-family: times,serif;
+	}
+}
+
+h1, h2, h3, h4, h5 {
+	font-weight: bold;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+h1 {
+	font-size: 135%;
+	text-align: center;
+}
+
+h2 {
+	font-size: 125%;
+	text-align: center;
+}
+
+h3 {
+	font-size: 115%;
+	font-style: italic;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+h4 {
+	font-size: 105%;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+h5 {
+	font-size: 95%;
+	font-style: italic;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+p {
+	text-align: justify;
+	margin-left: 2em;
+	margin-right: 2em;
+}
+
+pre {
+	background: #eeeeee;
+	padding: 1em;
+	margin-left: 3em;
+	margin-right: 3em;
+	border: solid 1px blue;
+}
+
+ul {
+	margin-top: 0em;
+	margin-left: 0em;
+	padding-left: 4em;
+	margin-bottom: 0em;
+}
+
+ul li ul {
+	margin-top: 0em;
+	margin-left: 0em;
+	padding-left: 2em;
+	margin-bottom: 0em;
+}
+
+table#sourcemods li {
+	font-weight: bold;
+}
+
+.buttonlabel {
+	font-size: 100%;
+	font-weight: bold;
+}
+
+.menulabel {
+	font-size: 100%;
+	font-weight: bold;
+}
+
+.popuplabel {
+	font-size: 100%;
+	font-weight: bold;
+}
+
+.textlabel {
+	font-size: 100%;
+	font-weight: bold;
+}
+
+.folderlabel {
+	font-size: 100%;
+	font-weight: bold;
+}
+
+.dialoglabel {
+	font-size: 100%;
+	font-weight: bold;
+}
+
+.taxonomy {
+	font-style: italic;
+}
+
+a {
+	color: #0033cc;
+}
+
+a:visited {
+	color: #cc6600;
+}
+
+body {
+	color: black;
+	background: white;
+}
+
+a img {
+	border: none;
+}
+
+img.figure {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+img#ncbilogo {
+	float: left;
+}
+
+div#header {
+	height: 45px;
+}
+
+div#header h1 {
+	line-height: 45px;
+	margin-left: 140px;
+	text-align: left;
+}
+
+div#footer {
+	text-align: center;
+	font-size: 80%;
+}
+
+ul#topnav {
+	list-style: none;
+	margin: 0;
+	padding: 1px;
+	padding-left: 130px;
+	background: black;
+}
+
+ul#topnav li {
+	display: inline;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+ul#topnav li a {
+	font-size:75%;
+	color:#ffffff;
+	font-family: arial,helvetica,sans-serif;
+	text-decoration:none;
+}
+
+ul#topnav li a:hover {
+	text-decoration: underline;
+}
+
+@media print {
+	h1#tophead, ul#topnav {
+		display: none;
+	}
+}
+

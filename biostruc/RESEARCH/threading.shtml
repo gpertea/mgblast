@@ -1,0 +1,181 @@
+<html>
+  <head>
+  <!-- $Id: threading.shtml,v 1.1 2005/08/02 15:04:18 chenj Exp $ -->
+  <!-- $Log: threading.shtml,v $
+  <!-- Revision 1.1  2005/08/02 15:04:18  chenj
+  <!-- new linux version on structure1/2
+  <!-- -->
+    <title> NCBI Structure - THREADING </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta name="author" content="Structure_threading">
+    <meta name="keywords" content="national center for biotechnology information, ncbi, national library of medicine, nlm, national institutes of health, nih, database, archive, bioinformatics, biomedicine, pubmed, pubmed central, bookshelf, structure, cn3d, vast, threading, mmdb, pkb">
+    <meta name="description" content="Protein threading predicts the three-dimensional structure of a protein sequence by threading it through known structures and calculating its energy (NCBI Structure Group Threading Page).">
+    <link rel="stylesheet" href="http://www.ncbi.nlm.nih.gov/ncbi.css">
+  </head>
+
+  <body bgcolor="#FFFFFF" background="http://www.ncbi.nlm.nih.gov/corehtml/bkgd.gif" text="#000000" link="#CC6600" vlink="#CC6600">
+
+<!--  the header   --> 
+    <table border="0" width="600" cellspacing="0" cellpadding="0">
+      <tr> 
+        <td width="140"><a href="http://www.ncbi.nlm.nih.gov">
+          <img src="http://www.ncbi.nlm.nih.gov/corehtml/left.GIF" width="130" height="45" border="0"></a>
+        </td>
+	<td width="9"><img src="http://www.ncbi.nlm.nih.gov/corehtml/spacer10.GIF" width="9" height="1" border="0">
+	</td>
+        <td WIDTH="460" valign="BOTTOM" >
+          <div align=right>
+          <a href="http://www.ncbi.nlm.nih.gov/Structure">
+          <img SRC="http://www.ncbi.nlm.nih.gov/Structure/GIFS/threading1.gif" border=0 height=70 width=458 ALT="NCBI Threading logo">
+        </a></div></td>
+        <td width="100" valign="BOTTOM"></td>
+      </tr>
+    </table>
+
+<!--  the quicklinks bar   --> 
+    <table border="0" width="600" cellspacing="0" cellpadding="1" bgcolor="#003366">
+      <!--#include virtual="/Structure/Components/quicklinks.htmlf" -->
+<!-- the search bar -->
+      <!--#include virtual="/Structure/Components/searchbar.htmlf" -->
+    </table>
+
+<!--  the contents   --> 
+    <table border="0" width="600" cellspacing="0" cellpadding="0">
+      <tr valign="TOP"> 
+<!--  left column   --> 
+        <td width="125"> 
+          <br>
+<!-- STRUCTURE LINKS -->
+          <p class="GUTTER1"><a href="/Structure/RESEARCH/casp3/index.shtml" class="GUTTER1"><B>CASP3</B></a></p>
+          <p class="GUTTER2">1998 prediction experiment</p>
+
+          <p class="GUTTER1"><a href="/Structure/RESEARCH/casp2/index.html" class="GUTTER1"><B>CASP2</B></a></p>
+          <p class="GUTTER2">1996 prediction experiment</p>
+
+          <p class="GUTTER1"><a href="/Structure/RESEARCH/leptin.html" class="GUTTER1"><B>Leptin predictions</B></a></p>
+          <p class="GUTTER2">Evaluation of 1995 predictions</p>
+
+          <p class="GUTTER1"><a href="/Structure/RESEARCH/thread_exp.html" class="GUTTER1"><B>NCBI Threading package</B></a></p>
+          <p class="GUTTER2">Installation and help document</p>
+
+          <hr>
+          <!--#include virtual="/Structure/Components/mmdblink.htmlf" -->
+          <!--#include virtual="/Structure/Components/cn3dlink.htmlf" -->
+          <!--#include virtual="/Structure/Components/vastlink.htmlf" -->
+          <!--#include virtual="/Structure/Components/researchlink.htmlf" -->
+        </td>
+<!-- extra column to force things over the gif border --> 
+        <td width="15" rowspan=2><img src="http://www.ncbi.nlm.nih.gov/corehtml/spacer10.GIF" width="15" height="1" border="0"> </td>
+
+<!-- right content column  --> 
+        <td width="320" CLASS="TEXT" rowspan=2> 
+          <br>   
+          <table border="0" width="320" cellspacing="0" cellpadding="0">
+            <tr> 
+              <td width="320" bgcolor="#CCCCFF" class="H4"><img src="http://www.ncbi.nlm.nih.gov/corehtml/bluebullet.gif" width="16" height="14" border="0">
+              Protein sequence-structure threading</td>
+            </tr>
+          </table>
+
+          <p class="TEXT">
+            We are working on methods for the assertion of
+            homology by comparing sequences to structural templates. If 
+            structural similarity between target and template is sufficiently large,
+            their relationship may be detected even in the absence of 
+            statistically significant sequence similarity. Research topics include:
+            <UL>
+             <li>Combination of contact-based scoring schemes and position-specific
+                 scoring matrices (PSSMs).
+             <li>Significance of Threading database search results
+             <li>Development of user-friendly tools for browsing Threading results
+             <li>Structural templates (cores) based on models of structural evolution
+             <li>Range of structural similarities detected by threading
+            </ul>
+          </p>
+
+          <table border="0" width="320" bgcolor="#ffffcc" cellspacing="0" cellpadding="3" class="TEXT">
+            <tr valign="MIDDLE">
+              <td width="320" bgcolor="#ffffcc" class="SMALL1"> 
+                 See evaluation results</a> for models submitted to CASP3 by the 
+                 <a href="http://www.ncbi.nlm.nih.gov/Structure/RESEARCH/casp3/Bryant.html">Bryant team</a>.<p>
+                 <a href="http://www.ncbi.nlm.nih.gov/cgi-bin/Structure/casp2srv?tora=1&target=All&strcmp=VAST&team=Bryant&tstyle=0&sort=22&order=0">
+                 See evaluation results</a> for models submitted to CASP2 by the 
+                 <a href="casp2/Bryant.html">Bryant team</a>.<p>
+              </td>
+            </tr>
+          </table>
+
+          <p class="SMALL1"><strong>Selected Online Publications:</strong></p>
+	  
+	  <p class="SMALL1">Wheelan S.J., Marchler-Bauer A., and Bryant S.H. (2000)
+	    Bioinformatics 16:613-619
+	    <a href="http://www.ncbi.nlm.nih.gov/Structure/dgs/DGSRef.html">Domain Size Distributions Can Predict Domain Boundaries</a>
+	  
+	  </p>
+
+          <p class="SMALL1">Panchenko A., Marchler-Bauer A., and Bryant S.H. (1999)
+            Proteins Suppl. 3:133-140
+            <a href="/Structure/RESEARCH/casp3/pap.html">Threading with Explicit Models for Evolutionary Conservation of Structure and Sequence</a></p>
+ 
+          <p class="SMALL1">Marchler-Bauer A., and Bryant S.H. (1999)
+            Proteins Suppl. 3:218-225
+            <a href="/Structure/RESEARCH/casp3/toc.html">A measure of progress in fold recognition?</a></p>
+ 
+
+          <p class="SMALL1">
+            Marchler-Bauer A., and Bryant S.H. (1997) Trends Biochem Sci., 22:236-240
+            <a href="casptibs.html">A measure of success in fold recognition</a></p>
+        </td>
+
+<!-- extra column to force things over the gif border --> 
+        <td width="15" rowspan=2><img src="http://www.ncbi.nlm.nih.gov/corehtml/spacer10.GIF" width="15" height="1" border="0"> </td>
+
+<!-- left hand column -->
+        <td class="TEXT" width=125>
+          <br>
+          <TABLE WIDTH="125" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+            <TR><TD ALIGN=CENTER BGCOLOR="#003366" CLASS="TEXT" height="17"><FONT COLOR="FFFFFF">
+            Software:</FONT></TD></TR>
+          </TABLE>
+          <p class="TEXT">
+
+          <table border="0" width="125" bgcolor="#ffffcc" cellspacing="0" cellpadding="3" class="TEXT">
+            <tr valign="MIDDLE">
+              <td width="125" bgcolor="#ffffcc" class="SMALL1"> 
+                Download PKB and Threading from the 
+                <A HREF="ftp://ftp.ncbi.nih.gov/pub/pkb">NCBI FTP-site</a>
+                (requires Splus).<p>
+              </td>
+            </tr>
+          </table>
+
+          <p class="SMALL1">
+            <a href="ftp://ftp.ncbi.nih.gov/pub/mmdb/casp2/src">Download</a> 
+            format-validation and evaluation software used in the 
+            <a href="casp2">fold recognition category</a> of the 
+            <a href="http://predictioncenter.llnl.gov/casp2/Casp2.html">CASP2</a> community experiment.
+          </p>
+
+          <br>
+        </td>
+      </tr>
+      <tr valign="BOTTOM">
+        <td width="125">
+          <hr>
+          <!--#config timefmt="%m/%d/%y" -->
+          <p class="GUTTER2">Updated <!--#echo var="LAST_MODIFIED"--></p>
+        </td>
+        <td width="125">
+          <!--#include virtual="/Structure/Components/bottomlinks.htmlf" -->
+        </td>
+      </tr>
+    </table>
+ <!--  end of content  -->  
+    &nbsp;
+
+ <!--  bottom navigation bar  -->  
+
+    <!--#include virtual="/Structure/Components/bottombar.htmlf" -->
+
+  </body>
+</html>

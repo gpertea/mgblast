@@ -1,0 +1,415 @@
+GENE2XML CONVERTER PROGRAM
+
+gene2xml is a stand-alone program that converts Entrez Gene ASN.1 into XML.
+It is available for several computer platforms (Alpha, Linux, Macintosh,
+Solaris, and Windows) and is distributed in the asn1-converters area of the
+NCBI public ftp site. From asn1-converters, navigate into by_program and
+then gene2xml, and download and extract the appropriate file.
+
+Entrez Gene data are stored as compressed binary Entrezgene-Set ASN.1 files
+on the NCBI ftp site, and have the suffix .ags.gz. These are several-fold
+smaller than compressed XML files, resulting in a significant savings of
+disk storage and network bandwidth. Normal processing by gene2xml produces
+text XML files with the same name but with .xgs as the suffix.
+
+The command-line arguments to gene2xml are described below.
+
+  -p  Path to Files [String]  Optional
+
+Use -p if you want to process a entire directory of files. In this case,
+gene2xml ignores the -i and -o arguments. Otherwise it takes -a as the
+single input file, regardless of suffix.
+
+  -r  Path for Results [String]  Optional
+
+If -p is given but no -r results path is provided, results are written in
+the same directory as the input file. The -p argument recursively explores
+any subdirectories, so there can be multiple places where output is written.
+
+  -i  Single Input File [File In]  Optional
+    default = stdin
+
+  -o  Single Output File [File Out]  Optional
+    default = stdout
+
+If -p is not given, -i is used for the input file, and -o is used for the
+output file. Suffix conventions are ignored in this case.
+
+  -b  File is Binary [T/F]  Optional
+    default = F
+
+  -c  File is Compressed [T/F]  Optional
+    default = F
+
+On UNIX platforms you can decompress .ags.gz files on-the-fly by using both
+-b and -c. On the PC you will need to manually decompress into .ags files
+and then only use the -b flag.
+
+  -t  Taxon ID to Filter [Integer]  Optional
+    default = 0
+
+If you want to extract only records for a particular organism, pass the
+NCBI taxon database number with the -t argument.  For example
+
+  gene2xml -i All_Mammalia.ags.gz -b -c -t 9685 -o cats.xgs
+
+will only send gene records for cats (taxonomy ID 9685) to the file
+cats.xgs.
+
+  -l  Log Processing [T/F]  Optional
+    default = F
+
+When you are processing an entire directory of files, passing -l on the
+command-line causes gene2xml to print the current file name as it
+progresses through the directory.
+
+The following arguments, -x, -y, and -z, are normally not used, and
+gene2xml will default to writing Entrezgene-Set XML, which is the normal
+situation.
+
+  -x  Extract .ags -> text .agc [T/F]  Optional
+    default = F
+
+To accommodate existing programs, the -x argument will convert .ags files
+to the catenated Entrezgene text ASN.1 files that were previously
+distributed.
+
+  -y  Combine .agc -> text .ags (for testing) [T/F]  Optional
+    default = F
+
+  -z  Combine .agc -> binary .ags, then gzip [T/F]  Optional
+    default = F
+
+NCBI uses gene2xml with the -y or -z arguments to process internal data
+into the compressed binary Entrezgene-Set ASN.1 files that are placed on
+the NCBI ftp site. It is not expected that anyone outside of NCBI would use
+these arguments.
+
+A sample record that illustrates the structure of Entrezgene-Set XML is
+shown below. Ellipses (...) are used where blocks of text have been removed
+for brevity in this documentation.
+
+<?xml version="1.0"?>
+<!DOCTYPE Entrezgene-Set PUBLIC "-//NCBI//NCBI Entrezgene/EN"
+"http://www.ncbi.nlm.nih.gov/dtd/NCBI_Entrezgene.dtd">
+<Entrezgene-Set>
+  <Entrezgene>
+    <Entrezgene_track-info>
+      <Gene-track>
+        <Gene-track_geneid>2652</Gene-track_geneid>
+        <Gene-track_status value="live">0</Gene-track_status>
+        <Gene-track_create-date>
+          <Date>
+            <Date_std>
+              <Date-std>
+                <Date-std_year>2003</Date-std_year>
+                <Date-std_month>8</Date-std_month>
+                <Date-std_day>28</Date-std_day>
+                <Date-std_hour>20</Date-std_hour>
+                <Date-std_minute>30</Date-std_minute>
+                <Date-std_second>0</Date-std_second>
+              </Date-std>
+            </Date_std>
+          </Date>
+        </Gene-track_create-date>
+		<Gene-track_update-date>
+		  <Date>
+			<Date_std>
+			  <Date-std>
+				<Date-std_year>2005</Date-std_year>
+				<Date-std_month>4</Date-std_month>
+				<Date-std_day>27</Date-std_day>
+				<Date-std_hour>21</Date-std_hour>
+				<Date-std_minute>45</Date-std_minute>
+				<Date-std_second>0</Date-std_second>
+			  </Date-std>
+			</Date_std>
+		  </Date>
+		</Gene-track_update-date>
+      </Gene-track>
+    </Entrezgene_track-info>
+    <Entrezgene_type value="protein-coding">6</Entrezgene_type>
+    <Entrezgene_source>
+      <BioSource>
+        <BioSource_genome value="genomic">1</BioSource_genome>
+        <BioSource_origin value="natural">1</BioSource_origin>
+        <BioSource_org>
+          <Org-ref>
+            <Org-ref_taxname>Homo sapiens</Org-ref_taxname>
+            <Org-ref_common>human</Org-ref_common>
+            <Org-ref_db>
+              <Dbtag>
+                <Dbtag_db>taxon</Dbtag_db>
+                <Dbtag_tag>
+                  <Object-id>
+                    <Object-id_id>9606</Object-id_id>
+                  </Object-id>
+                </Dbtag_tag>
+              </Dbtag>
+            </Org-ref_db>
+            <Org-ref_syn>
+              <Org-ref_syn_E>man</Org-ref_syn_E>
+            </Org-ref_syn>
+            <Org-ref_orgname>
+              <OrgName>
+                <OrgName_name>
+                  <OrgName_name_binomial>
+                    <BinomialOrgName>
+                      <BinomialOrgName_genus>Homo</BinomialOrgName_genus>
+                      <BinomialOrgName_species>sapiens
+</BinomialOrgName_species>
+                    </BinomialOrgName>
+                  </OrgName_name_binomial>
+                </OrgName_name>
+                <OrgName_lineage>Eukaryota; Metazoa; Chordata; Craniata;
+Vertebrata; Euteleostomi; Mammalia; Eutheria; Euarchontoglires; Primates;
+Catarrhini; Hominidae; Homo</OrgName_lineage>
+                <OrgName_gcode>1</OrgName_gcode>
+                <OrgName_mgcode>2</OrgName_mgcode>
+                <OrgName_div>PRI</OrgName_div>
+              </OrgName>
+            </Org-ref_orgname>
+          </Org-ref>
+        </BioSource_org>
+        <BioSource_subtype>
+          <SubSource>
+            <SubSource_subtype value="chromosome">1</SubSource_subtype>
+            <SubSource_name>X</SubSource_name>
+          </SubSource>
+        </BioSource_subtype>
+      </BioSource>
+    </Entrezgene_source>
+    <Entrezgene_gene>
+      <Gene-ref>
+        <Gene-ref_locus>OPN1MW</Gene-ref_locus>
+        <Gene-ref_desc>opsin 1 (cone pigments), medium-wave-sensitive (color
+blindness, deutan)</Gene-ref_desc>
+        <Gene-ref_maploc>Xq28</Gene-ref_maploc>
+        <Gene-ref_db>
+          <Dbtag>
+            <Dbtag_db>MIM</Dbtag_db>
+            <Dbtag_tag>
+              <Object-id>
+                <Object-id_id>303800</Object-id_id>
+              </Object-id>
+            </Dbtag_tag>
+          </Dbtag>
+        </Gene-ref_db>
+        <Gene-ref_syn>
+          <Gene-ref_syn_E>CBD</Gene-ref_syn_E>
+          <Gene-ref_syn_E>DCB</Gene-ref_syn_E>
+          <Gene-ref_syn_E>GCP</Gene-ref_syn_E>
+          <Gene-ref_syn_E>CBBM</Gene-ref_syn_E>
+        </Gene-ref_syn>
+        <Gene-ref_locus-tag>HGNC:4206</Gene-ref_locus-tag>
+      </Gene-ref>
+    </Entrezgene_gene>
+    <Entrezgene_prot>
+      <Prot-ref>
+        <Prot-ref_name>
+          <Prot-ref_name_E>opsin 1 (cone pigments), medium-wave-sensitive
+(color blindness, deutan)</Prot-ref_name_E>
+          <Prot-ref_name_E>green cone pigment</Prot-ref_name_E>
+        </Prot-ref_name>
+      </Prot-ref>
+    </Entrezgene_prot>
+    <Entrezgene_location>
+      <Maps>
+        <Maps_display-str>Xq28</Maps_display-str>
+        <Maps_method>
+          <Maps_method_map-type value="cyto"/>
+        </Maps_method>
+      </Maps>
+    </Entrezgene_location>
+    <Entrezgene_gene-source>
+      <Gene-source>
+        <Gene-source_src>LocusLink</Gene-source_src>
+        <Gene-source_src-int>2652</Gene-source_src-int>
+        <Gene-source_src-str2>2652</Gene-source_src-str2>
+      </Gene-source>
+    </Entrezgene_gene-source>
+    <Entrezgene_locus>
+      <Gene-commentary>
+        <Gene-commentary_type value="genomic">1</Gene-commentary_type>
+        <Gene-commentary_heading>Reference</Gene-commentary_heading>
+        <Gene-commentary_accession>NC_000023</Gene-commentary_accession>
+        <Gene-commentary_version>8</Gene-commentary_version>
+        <Gene-commentary_seqs>
+          <Seq-loc>
+            <Seq-loc_int>
+              <Seq-interval>
+                <Seq-interval_from>152969013</Seq-interval_from>
+                <Seq-interval_to>152982377</Seq-interval_to>
+                <Seq-interval_strand>
+                  <Na-strand value="plus"/>
+                </Seq-interval_strand>
+                <Seq-interval_id>
+                  <Seq-id>
+                    <Seq-id_gi>51511752</Seq-id_gi>
+                  </Seq-id>
+                </Seq-interval_id>
+              </Seq-interval>
+            </Seq-loc_int>
+          </Seq-loc>
+        </Gene-commentary_seqs>
+        <Gene-commentary_products>
+          <Gene-commentary>
+            <Gene-commentary_type value="mRNA">3</Gene-commentary_type>
+            <Gene-commentary_heading>Reference</Gene-commentary_heading>
+            <Gene-commentary_accession>NM_000513</Gene-commentary_accession>
+            <Gene-commentary_version>1</Gene-commentary_version>
+            <Gene-commentary_genomic-coords>
+              <Seq-loc>
+                <Seq-loc_mix>
+                  <Seq-loc-mix>
+                    <Seq-loc>
+                      <Seq-loc_int>
+                        <Seq-interval>
+                          <Seq-interval_from>152969013</Seq-interval_from>
+                          <Seq-interval_to>152969124</Seq-interval_to>
+                          <Seq-interval_strand>
+                            <Na-strand value="plus"/>
+                          </Seq-interval_strand>
+                          <Seq-interval_id>
+                            <Seq-id>
+                              <Seq-id_gi>51511752</Seq-id_gi>
+                            </Seq-id>
+                          </Seq-interval_id>
+                        </Seq-interval>
+                      </Seq-loc_int>
+                    </Seq-loc>
+                    ...
+                  </Seq-loc-mix>
+                </Seq-loc_mix>
+              </Seq-loc>
+            </Gene-commentary_genomic-coords>
+            <Gene-commentary_seqs>
+              <Seq-loc>
+                <Seq-loc_whole>
+                  <Seq-id>
+                    <Seq-id_gi>4503964</Seq-id_gi>
+                  </Seq-id>
+                </Seq-loc_whole>
+              </Seq-loc>
+            </Gene-commentary_seqs>
+            <Gene-commentary_products>
+              <Gene-commentary>
+                <Gene-commentary_type value="peptide">8</Gene-commentary_type>
+                <Gene-commentary_heading>Reference</Gene-commentary_heading>
+                <Gene-commentary_accession>NP_000504
+</Gene-commentary_accession>
+                <Gene-commentary_version>1</Gene-commentary_version>
+                <Gene-commentary_genomic-coords>
+                  <Seq-loc>
+                    <Seq-loc_packed-int>
+                      <Packed-seqint>
+                        <Seq-interval>
+                          <Seq-interval_from>152969013</Seq-interval_from>
+                          <Seq-interval_to>152969124</Seq-interval_to>
+                          <Seq-interval_strand>
+                            <Na-strand value="plus"/>
+                          </Seq-interval_strand>
+                          <Seq-interval_id>
+                            <Seq-id>
+                              <Seq-id_gi>51511752</Seq-id_gi>
+                            </Seq-id>
+                          </Seq-interval_id>
+                        </Seq-interval>
+                        ...
+                      </Packed-seqint>
+                    </Seq-loc_packed-int>
+                  </Seq-loc>
+                </Gene-commentary_genomic-coords>
+                <Gene-commentary_seqs>
+                  <Seq-loc>
+                    <Seq-loc_whole>
+                      <Seq-id>
+                        <Seq-id_gi>4503965</Seq-id_gi>
+                      </Seq-id>
+                    </Seq-loc_whole>
+                  </Seq-loc>
+                </Gene-commentary_seqs>
+              </Gene-commentary>
+            </Gene-commentary_products>
+          </Gene-commentary>
+        </Gene-commentary_products>
+      </Gene-commentary>
+      ...
+    </Entrezgene_locus>
+    <Entrezgene_properties>
+      <Gene-commentary>
+        <Gene-commentary_type value="comment">254</Gene-commentary_type>
+        <Gene-commentary_label>Nomenclature</Gene-commentary_label>
+        <Gene-commentary_source>
+          <Other-source>
+            <Other-source_anchor>HUGO Gene Nomenclature Committee
+</Other-source_anchor>
+          </Other-source>
+        </Gene-commentary_source>
+        <Gene-commentary_properties>
+          <Gene-commentary>
+            <Gene-commentary_type value="property">16</Gene-commentary_type>
+            <Gene-commentary_label>Official Symbol</Gene-commentary_label>
+            <Gene-commentary_text>OPN1MW</Gene-commentary_text>
+          </Gene-commentary>
+          <Gene-commentary>
+            <Gene-commentary_type value="property">16</Gene-commentary_type>
+            <Gene-commentary_label>Official Full Name</Gene-commentary_label>
+            <Gene-commentary_text>opsin 1 (cone pigments),
+medium-wave-sensitive (color blindness, deutan)</Gene-commentary_text>
+          </Gene-commentary>
+        </Gene-commentary_properties>
+      </Gene-commentary>
+      ...
+    </Entrezgene_properties>
+    <Entrezgene_comments>
+      <Gene-commentary>
+        <Gene-commentary_type value="comment">254</Gene-commentary_type>
+        <Gene-commentary_heading>LocusTagLink</Gene-commentary_heading>
+        <Gene-commentary_source>
+          <Other-source>
+            <Other-source_src>
+              <Dbtag>
+                <Dbtag_db>HGNC</Dbtag_db>
+                <Dbtag_tag>
+                  <Object-id>
+                    <Object-id_id>4206</Object-id_id>
+                  </Object-id>
+                </Dbtag_tag>
+              </Dbtag>
+            </Other-source_src>
+          </Other-source>
+        </Gene-commentary_source>
+      </Gene-commentary>
+      ...
+    </Entrezgene_comments>
+    <Entrezgene_unique-keys>
+      <Dbtag>
+        <Dbtag_db>LocusID</Dbtag_db>
+        <Dbtag_tag>
+          <Object-id>
+            <Object-id_id>2652</Object-id_id>
+          </Object-id>
+        </Dbtag_tag>
+      </Dbtag>
+      <Dbtag>
+        <Dbtag_db>MIM</Dbtag_db>
+        <Dbtag_tag>
+          <Object-id>
+            <Object-id_id>303800</Object-id_id>
+          </Object-id>
+        </Dbtag_tag>
+      </Dbtag>
+    </Entrezgene_unique-keys>
+    <Entrezgene_xtra-index-terms>
+      <Entrezgene_xtra-index-terms_E>LOC2652</Entrezgene_xtra-index-terms_E>
+    </Entrezgene_xtra-index-terms>
+    <Entrezgene_xtra-properties>
+      <Xtra-Terms>
+        <Xtra-Terms_tag>PROP</Xtra-Terms_tag>
+        <Xtra-Terms_value>phenotype</Xtra-Terms_value>
+      </Xtra-Terms>
+    </Entrezgene_xtra-properties>
+  </Entrezgene>
+</Entrezgene-Set>
+

@@ -1,0 +1,50 @@
+#This is makefile for web blast2 that uses c++ showalign API
+builddir = $(NCBI)/c++.metastable/DebugMT/build
+builddir = $(NCBI)/c++.metastable/ReleaseMT/build
+
+###  DEFAULT COMPILATION FLAGS  -- DON'T EDIT OR MOVE THESE 4 LINES !!!  ###
+include $(builddir)/Makefile.mk
+
+
+LOCAL_CPPFLAGS += -I. -I/netopt/ncbi_tools/include -I../../../../internal/blast/SplitDB -DNCBI_ENTREZ_CLIENT -DNCBI_CLIENT_SERVER -DNCBI_INTERNAL_NEW_FORMATTER
+
+srcdir = .
+BINCOPY = @:
+
+
+APP = wblast2_cs.REAL
+
+SRC = wblast2 showalignwrap
+
+LIB = xblastformat xblast xnetblast scoremat xalntool xalnmgr blastxml xobjread ncbi_xloader_blastdb xobjutil $(OBJMGR_LIBS:=-static) xhtml xcgi seqdb  blastdb 
+
+
+
+CPPFLAGS = $(ORIG_CPPFLAGS) $(NCBI_C_INCLUDE)
+
+LIB += $(SD_DBAPI)
+
+
+LIBS =  $(NCBI_C_LIBPATH) \
+        -lbob -lsplitdbasn\
+        -lncbitxc2 -lnetblast -lncbiid1 -lncbidesk -lblastapi -lncbitool -lblastcompadj \
+        -lnetentr -lncbiNacc -lnetentr -lnetcli \
+        -lvibgif -lncbidesk -lncbi -lvibrant -lncbicdr -lncbiobj -lncbi \
+        $(NCBI_OTHERLIBS) $(CMPRS_LIBS) $(NETWORK_PURE_LIBS) $(ORIG_LIBS) \
+        -lresolv -lconnext -lxncbi -ldl -lblast
+
+CFLAGS   = $(ORIG_CFLAGS) 
+CXXFLAGS = $(ORIG_CXXFLAGS)
+LDFLAGS  = $(ORIG_LDFLAGS) \
+         -L../../../../internal/blast/SplitDB/lib
+
+#                                                                         ###
+#############################################################################
+
+
+###  APPLICATION BUILD RULES  -- DON'T EDIT OR MOVE THIS LINE !!!  ###
+
+include $(builddir)/Makefile.app
+MAKEFILE = Makefile.light_getreq_app
+
+###  PUT YOUR OWN ADDITIONAL TARGETS (MAKE COMMANDS/RULES) BELOW HERE  ###

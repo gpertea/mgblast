@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link rel="stylesheet" href="http://www.ncbi.nlm.nih.gov/corehtml/ncbi2.css" type="text/css" />
+  <style type="text/css">
+  body {background-color: #FFFFFF; color: #000000;}
+  div.c5 {margin-left: 2em;}
+  h3.c4 {font-weight: bold;}
+  p.c3 {font-size: 120%; font-weight: bold;}
+  h3.c2 {font-size: 120%; font-weight: bold;}
+  b.c1 {color: white;}
+  a.c1 {color: #FFFFFF;}
+  .breadcrumb {font-size: 90%; font-family: sans-serif; text-decoration: none; font-weight: bold; color: white; }
+  .breadcrumb a { text-decoration: none; color: white; }
+  .sidebar { font-size: 80%; font-family: arial, helvetica, sans-serif; text-decoration:none; background-color: #336699; }
+  .sidebar li {color: #ccccff;}
+  .sidebar a  {color: #ffffff; text-decoration:none;}
+  .sidebar p {color: #ffcc66;}
+  .content { position: fixed; margin-left: 125; }
+  .footer {clear: both;}
+  .blast { font-family: sans-serif; }
+  .blast h3 { font-size: 14px; }
+  .blast a { text-decoration: none; }
+  .blast li {  font-size: 12px; }
+  .fix-width { font-family: courier; font-size: 80%; }
+  .pink { font-weight: bold; font-size: 100%; color: #ff8888; font-family: arial, helvetica, sans-serif; }
+  .text2 {font-size: 10pt;font-family: arial,helvetica,sans-serif;}
+  .tbl_title{font-weight: bold; font-size: 10pt; color: #0000FF; font-family: arial, helvetica, sans-serif;}
+  </style>
+<title>Seedtop Document</title>
+</head>
+<body>
+
+<table bgcolor="#eeeeff" width="600" class="text2">
+<tbody>
+<tr><td align="center" class="tbl_title">Program Options for seedtop</td></tr>
+<tr><td align="center" class="text2">Tao Tao, Ph.D.<br/>User Service<br/>NCBI, NLM, NIH</td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td class="tbl_title">Table of Content</td></tr>
+<tr><td>
+	<ul class="1">
+		<li><a href="#1">1. Introduction</a></li>
+		<li><a href="#2">2. Setup</a></li>
+		<li><a href="#3">3. Program options</a></li>
+		<li><a href="#4">4. Practical Usage</a>
+		<ul>
+		<li><a href="#4.1">4.1 Pattern specification</a></li>
+		<li><a href="#4.2">4.2 patmatchp</a></li>
+		<li><a href="#4.3">4.3 patternp</a></li>
+		<li><a href="#4.4">4.4 patseedp</a></li>
+		<li><a href="#4.5">4.5 seedp</a></li>
+		<li><a href="#4.6">4.6 For nucleotide searches</a></li></ul></li>
+		<li><a href="#5">5. Technical Support</a></li>
+	</ul><br /></td></tr>
+<tr><td>&nbsp;</td></tr>	
+
+<tr><td class="tbl_title"><a name="1">1. Introduction</a></td></tr>
+<tr><td class="text2">
+seedtop is a little-known program found in the NCBI standalone blast package, whose main function 
+is to search for patterns in an input sequence or database. It has four modes of usage, which are 
+referred to as "subprograms": two for pattern searches from a input query or database only and 
+two for pattern initiated sequence alignment. The following table lists these subprograms, their 
+functions, and required inputs.
+<br />
+<br />
+<table width="600" border="1" class="text">
+<tr><td colspan="3" class="tbl_title" align="center">Table 1.1 Subprogram Fucntion of seedtop</td></tr>
+<tr class="tbl_title">
+<td width="100">Program Call &sup1;</td><td>Functions</td><td>Required Inputs</td></tr>
+<tr><td>-p patmatch</td><td>Search for patterns in an input sequence</td>
+	<td>Pattern (-k) and sequence (-i)</td></tr>
+<tr><td>-p pattern</td><td>Search for patterns in an input database</td>
+	<td>Same as above</td></tr>
+<tr><td>-p patseed</td><td>Search for patterns in the query and align the query against a database</td>
+	<td>Pattern (-k), input  sequence (-i), and target database (-d)</td></tr>
+<tr><td>-p seed</td><td>Search for specific pattern in the query and align the query against a database</td>
+	<td>Same as above &sup2;</td></tr>
+<tr><td colspan="3" class="medium2">NOTE:<br/>
+&sup1; The program strings listed are for nucleotide searches. For protein searches, add lowercase p to the program name.<br/>
+&sup2; The pattern file needs to have an extra HI initialed line to specify the position in the input sequence at which the pattern occurrence of interest starts.</td></tr></table>
+</td></tr>
+<tr><td>&nbsp;</td></tr>
+
+<tr><td class="tbl_title"><a name="2">2. Setup</a></td></tr>
+<tr><td>
+Installation of the standalone blast archive is fairly easy. Once the archive is placed in a desired
+directory and extracted, the whole package will be installed in a newly created subdirectory called 
+blast-2.2.13 (assuming 2.2.13 release here). All the programs, including seedtop, will be in the 
+blast-2.2.13/bin/ subdirectory (blast-2.2.13\bin\ for PC).
+<p/>
+Appropriate setup requires the creation of .ncbirc configuration file, which blast programs (including
+seedtop) read upon startup to locate the appropriate files needed. In this .ncbirc, we can specify the 
+location of the DATA directory and the BLASTDB directory using the following lines:
+
+<blockquote>
+[NCBI]<br/>
+DATA=/path/data<br/>
+<br/>
+[BLAST]<br/>
+BLASTDB=/path/db<br/>
+</blockquote>
+<p/>
+The [NCBI] section is used by most of the NCBI programs to locate the data directory and retrieve specific
+files needed (MATRIX file for example). The [BLAST] section specifies the path to the directory where 
+databases are stored.
+<p/>
+The db directory does not come with the NCBI setup, so one needs to create it after installation. If we
+place the directory anywhere, we need to change the path correspondingly. For simplicity, we suggest that 
+it be created under the blast-2.2.13 (version # will vary for future releases) at the same level as data directory.
+<p/>
+</td></tr>
+<tr><td class="tbl_title"><a name="3">3. Program Options</a></td></tr>
+<tr><td>
+Once the standalone BLAST package is setup, we can "cd" to the directory and issue the <b>"seedtp -"</b>
+command to display the program options for this program.  Here we list each option in a table and describe 
+its functions, argument value, and example usage.
+<p/>
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.1</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-d</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Specifies the target database to search</td></tr>
+<tr><td class="tbl_title">Default</td><td><b>nr</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>Takes database formatted by formatdb, use name without extension</td></tr>
+<tr><td class="tbl_title">Example</td><td>To search against est_human, use: -d est_human</td></tr>
+<tr><td class="tbl_title">Note</td><td>This is not a mandatory option, search for patterns in a single input sequence does not require this option.</td></tr>
+</table>
+<p/>
+
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.2</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-i</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Specifies the input query file</td></tr>
+<tr><td class="tbl_title">Default</td><td><b>stdin</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>[File In], file name with extension</td></tr>
+<tr><td class="tbl_title">Example</td><td>To take my_pept.txt as input query, use: -i my_pept.txt</td></tr>
+<tr><td class="tbl_title">Note</td><td>To using stdin as input, either redirect or pipe the input:<br/>
+seedtop -k pat -p patmatchp &lt;input_file
+<br/>more input_file| seedtop -k pat -p patmatchp</td></tr>
+</table>
+<p/>
+
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.3</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-k</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Specifies the input pattern (Hit File)</td></tr>
+<tr><td class="tbl_title">Default</td><td><b>hit_file</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>Complete file name with extension</td></tr>
+<tr><td class="tbl_title">Example</td><td>If the pattern file is named my_pat.txt, use: -k my_pat.txt</td></tr>
+<tr><td class="tbl_title">Note</td><td>See section 4.1 below for details.</td></tr>
+</table>
+<p/>
+
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.4</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-o</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Specifies the output file name</td></tr>
+<tr><td class="tbl_title">Default</td><td><b>stdout</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>file name with or without extension</td></tr>
+<tr><td class="tbl_title">Example</td><td>To save result in my_output, use: -o my_output</td></tr>
+<tr><td class="tbl_title">Note</td><td>Redirection or piping can be used instead.</td></tr>
+</table>
+<p/>
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.5</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-G</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Specifies the cost to open a gap </td></tr>
+<tr><td class="tbl_title">Default</td><td><b>11</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>[Integer]</td></tr>
+<tr><td class="tbl_title">Example</td><td>To change this to 12, use: -G 12</td></tr>
+<tr><td class="tbl_title">Note</td><td>The choice of -M option determines the available input value for this option as well as that for -E option. Only a selected set is supported. Detailed list is in the blastall document.</td></tr>
+</table>
+<p/>
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.6</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-E</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Specifies the cost to extend a gap</td></tr>
+<tr><td class="tbl_title">Default</td><td><b>1</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>[Integer]</td></tr>
+<tr><td class="tbl_title">Example</td><td>To change this to 2, use: -E 2</td></tr>
+<tr><td class="tbl_title">Note</td><td>See Table 3.5 for more information</td></tr>
+</table>
+<p/>
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.6</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-D</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Specifies the cost to decline alignment</td></tr>
+<tr><td class="tbl_title">Default</td><td><b>99999</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>[Integer]</td></tr>
+<tr><td class="tbl_title">Example</td><td>N/A</td></tr>
+<tr><td class="tbl_title">Note</td><td>Functions similar to the -L option in blastpgp. If enabled, it would implement Dr. Altschul's 3-parameter gap model for scoring.</td></tr>
+</table>
+<p/>
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.7</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-X</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Specifies X dropoff value for gapped alignment (in bits)</td></tr>
+<tr><td class="tbl_title">Default</td><td><b>15</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>[Integer]</td></tr>
+<tr><td class="tbl_title">Example</td><td>To increase this dropoff value to 20, use: -X 20 </td></tr>
+<tr><td class="tbl_title">Note</td><td>Increasing this value may enable one to see a longer alignment</td></tr>
+</table>
+<p/>
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.8</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-S</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Specifies cutoff cost</td></tr>
+<tr><td class="tbl_title">Default</td><td><b>30</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>[Integer]</td></tr>
+<tr><td class="tbl_title">Example</td><td>N/A</td></tr>
+<tr><td class="tbl_title">Note</td><td>Currently it is overridden in pseed3.c. It could allow the user to control the score threshold applied to the part of the alignment that does not include the pattern in deciding which alignment(s) to report. </td></tr>
+</table>
+<p/>
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.9</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-C</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Score only or not</td></tr>
+<tr><td class="tbl_title">Default</td><td><b>1</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>[Integer]</td></tr>
+<tr><td class="tbl_title">Example</td><td>N/A</td></tr>
+<tr><td class="tbl_title">Note</td><td>This is relevant only to searches with -p seed(p) or -p patseed(p). NOT implemented yet. </td></tr>
+</table>
+<p/>
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.10</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-I</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Whether to Show GI's in deflines</td></tr>
+<tr><td class="tbl_title">Default</td><td><b>F</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>[T/F]</td></tr>
+<tr><td class="tbl_title">Example</td><td>To display GI in the deflines, use: -I T</td></tr>
+<tr><td class="tbl_title">Note</td><td>Relevant only to searches with -p seed(p) or -p patseed(p)</td></tr>
+</table>
+<p/>
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.11</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-e</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Specifies the expectation value (E) cutoff</td></tr>
+<tr><td class="tbl_title">Default</td><td><b>10.0</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>[Real]</td></tr>
+<tr><td class="tbl_title">Example</td><td>To set this to 0.001, use: -e 0.001 or -e 1e-3</td></tr>
+<tr><td class="tbl_title">Note</td><td>Relevant only to searches with -p seed(p) or -p patseed(p)</td></tr>
+</table>
+<p/>
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.12</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-J</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Whether to believe the query defline or not</td></tr>
+<tr><td class="tbl_title">Default</td><td><b>F</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>[T/F]</td></tr>
+<tr><td class="tbl_title">Example</td><td>To set this to true, use: -J T</td></tr>
+<tr><td class="tbl_title">Note</td><td>To save SeqAlign object requires -J T </td></tr>
+</table>
+<p/>
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.13</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-O</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Specifies the output file for SeqAlign object </td></tr>
+<tr><td class="tbl_title">Default</td><td><b>Optional</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>[File Out]</td></tr>
+<tr><td class="tbl_title">Example</td><td>N/A</td></tr>
+<tr><td class="tbl_title">Note</td><td>Relevant only to searches with -p seed(p) or -p patseed(p). NOT implement yet.</td></tr>
+</table>
+<p/>
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.14</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-M</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Specifies which matrix file to use</td></tr>
+<tr><td class="tbl_title">Default</td><td><b>BLOSUM62</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>[String]</td></tr>
+<tr><td class="tbl_title">Example</td><td>To set matrix to PAM30, use: -M PAM30</td></tr>
+<tr><td class="tbl_title">Note</td><td>Relevant to seedp/patseedp searches, only a limited set is supported</td></tr>
+</table>
+<p/>
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.15</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-p</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Specifies which subprogram to run</td></tr>
+<tr><td class="tbl_title">Default</td><td><b>patmatchp</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>[String]</td></tr>
+<tr><td class="tbl_title">Example</td><td>To find protein patterns in a database, use: -p patternp</td></tr>
+<tr><td class="tbl_title">Note</td><td>Choices for nucleotide searches: patmatch, pattern, seed, and patseed<br/>
+Choices for protein searches: patmatchp, patternp, seedp, and patseedp</td></tr>
+</table>
+<p/>
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.16</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-r</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Specifies the reward for a match</td></tr>
+<tr><td class="tbl_title">Default</td><td><b>10</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>[Integer]</td></tr>
+<tr><td class="tbl_title">Example</td><td>To increase the reward to 20, use: -r 20</td></tr>
+<tr><td class="tbl_title">Note</td><td>Relevant only to searches with -p seed(p) or -p patseed<br/>For nucleotide searches only.</td></tr>
+</table>
+<p/>
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.17</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-q</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Specifies the cost for a mismatch</td></tr>
+<tr><td class="tbl_title">Default</td><td><b>-10</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>[Integer]</td></tr>
+<tr><td class="tbl_title">Example</td><td>To increase the penalty to -15, use: -q -15</td></tr>
+<tr><td class="tbl_title">Note</td><td>For nucleotide search with seed/patseed only.</td></tr>
+</table>
+<p/>
+<table width="600" border="1" class="text">
+<tr><td colspan="2" class="tbl_title">Table 3.18</td></tr>
+<tr><td class="tbl_title" width="150">Option</td><td width="450"><b>-F</b></td></tr>
+<tr><td class="tbl_title">Function</td><td>Whether to filter query sequence with SEG</td></tr>
+<tr><td class="tbl_title">Default</td><td><b>F</b></td></tr>
+<tr><td class="tbl_title">Input format</td><td>[T/F]</td></tr>
+<tr><td class="tbl_title">Example</td><td>To activate filter, use: -F T</td></tr>
+<tr><td class="tbl_title">Note</td><td>Relevant to seedp/patseedp searches only.</td></tr>
+</table>
+<p/>
+</td></tr>
+
+<tr><td class="tbl_title"><a name="4">4. Execution and Practical Usage</a></td></tr>
+<tr><td>
+The most useful functionalities of seedtop are patmatchp and patternp. Since patseedp 
+does not generate the actual alignment and its function is already incorporated in blastpgp, we 
+will not cover it here. The functionality for searching with nucleotide entries are similar to 
+protein searches, we will only provide a couple simple examples.
+<br /><br /></td></tr>
+
+<tr><td class="tbl_title"><a name="4.1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1 Pattern specification</a></td></tr>
+<tr><td>
+The pattern input file is unique for seedtop. Each pattern is specified by two lines, 
+ID initialed for identification and PA initialed for pattern. The pattern specification uses the 
+ProSite syntax. Multiple patterns can be used, each separated by a single line with a "/".
+<p/>
+
+Single pattern specification:
+<blockquote class="fixed">
+ID Cyclic nucleotide-binding domain signature 2.<br/>
+PA [LIVMF]-G-E-x-[GAS]-[LIVM]-x(5,11)-R-[STAQ]-A-x-[LIVMA]-x-[STACV].<br/>
+</blockquote>
+<p/>
+Multiple pattern specification:
+<blockquote class="fixed">
+ID Cyclic nucleotide-binding domain signature 2.<br/>
+PA [LIVMF]-G-E-x-[GAS]-[LIVM]-x(5,11)-R-[STAQ]-A-x-[LIVMA]-x-[STACV].<br/>
+/<br/>
+ID Cyclic nucleotide-binding domain signature 1<br/>
+PA [LIVM]-[VIC]-x-{H}-G-[DENQTA]-x-[GAC]-{L}-x-[LIVMFY](4)-x(2)-G<br/>
+</blockquote>
+<p/>
+Pattern lines should be less than 100 letters long. Longer patterns can be broken 
+up into two or more PA lines. Multiple individual patterns should be separated by a line 
+containing a single backslash (/). Other general pattern rules can be summarized as the 
+following:
+<blockquote>
+<table class="text2" width="500">
+<tr><td width="60"><b>Symbol</b></td><td><b>Meaning</b></td></tr>
+<tr><td><b>[]</b></td><td>marks a single position, match to anyone in the bracket is acceptable</td></tr>
+<tr><td><b>(x,y)</b></td><td>marks a range for the residue(s) before it, matching within the range is acceptable</td></tr>
+<tr><td><b>(x,)</b></td><td>represents range with no upper limit for the residue(s) before it</td></tr>
+<tr><td><b>(x)</b></td><td>represents exact number of matches for the residue(s) before it</td></tr>
+<tr><td><b>{}</b></td><td>marks a single residue, residues in the braces should be excluded</td></tr>
+<tr><td><b>-</b></td><td>separates the individual positions in the pattern</td></tr>
+<tr><td><b>.</b></td><td>used at the end marks the end of a pattern</td></tr>
+<tr><td><b>&gt;</b></td><td>symbol at the end marks an incomplete pattern (optional)</td></tr>
+</table>
+</blockquote>
+</td></tr>
+
+<tr><td class="tbl_title"><a name="4.2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.2 patmatchp</a></td></tr>
+<tr><td>
+This function matches patterns found in an input pattern file and identifies the 
+pattern occurrences in an input protein sequence. The sample command line below (given
+along with its output) takes an input pattern named pattern.txt, searches against the 
+input query.aa target sequence, and saves the output in a file named query.out.
+
+<blockquote>
+seedtop -k pattern.txt -i query.aa -p patmatchp -o query.out<br/>
+<br/>
+Name  Cyclic nucleotide-binding domain signature 2.<br/>
+Pattern [LIVMF]-G-E-x-[GAS]-[LIVM]-x(5,11)-R-[STAQ]-A-x-[LIVMA]-x-[STACV].<br/>
+&nbsp;At position 521 of query sequence<br/>
+Name  Cyclic nucleotide-binding domain signature 1<br/>
+Pattern [LIVM]-[VIC]-x-{H}-G-[DENQTA]-x-[GAC]-{L}-x-[LIVMFY](4)-x(2)-G<br/>
+&nbsp;At position 483 of query sequence<br/>
+</blockquote>
+The result only lists the pattern starting positions in the query sequence.
+<br /><br />
+</td></tr>
+
+
+<tr><td class="tbl_title"><a name="4.3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.3 patternp</a></td></tr>
+<tr><td>
+This function matches patterns in an input pattern file against an input database 
+and reports back the database entries containing one or more of the input patterns as 
+well as the pattern locations. The sample command line below (given with its partial output) 
+takes an input pattern named pattern.txt, searches against the input refseq_protein database, 
+the identified entries with pattern matches are saved in the output file db.out.
+
+<blockquote>
+seedtop -k pattern.txt -d refseq_protein -p patternp -o db.out<br />
+<br />
+seqno=892602    gi|33859524|ref|NP_034048.1|<br />
+<br />
+ID  Cyclic nucleotide-binding domain signature 1<br />
+PA  [LIVM]-[VIC]-x-{H}-G-[DENQTA]-x-[GAC]-{L}-x-[LIVMFY](4)-x(2)-G<br />
+HI (449 450) (452 454) (456 457) (459 462) (465 465)<br />
+seqno=892873    gi|51470807|ref|XP_290552.4|<br />
+<br />
+ID  Cyclic nucleotide-binding domain signature 1<br />
+PA  [LIVM]-[VIC]-x-{H}-G-[DENQTA]-x-[GAC]-{L}-x-[LIVMFY](4)-x(2)-G<br />
+HI (374 375) (377 379) (381 382) (384 387) (390 390)<br />
+</blockquote>
+<p/>
+Each hit is described in the following lines:<ul>
+<li><b>seqno:</b>  seqid for the database sequence with pattern matches</li>
+<li><b>ID:</b>  Pattern ID, reiterated pattern input</li>
+<li><b>PA:</b>  Pattern, reiterated pattern input</li>
+<li><b>HI:</b>  Hit position on the db sequence, regions broken up by X</li></ul>
+</td></tr>
+
+<tr><td class="tbl_title"><a name="4.4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.4 patseedp</a></td></tr>
+<tr><td>
+This function takes three inputs, an input pattern, a query protein sequence 
+with the pattern, and a protein sequence database. It identifies the pattern in the 
+query and aligns the query against the database entries that contains the same pattern.
+It reports the pattern position in the query, the total number of pattern occurrences 
+in the database, and the actual database entries with pattern and alignment to the 
+input query. Specifically, it reports the seqid of the database entry, its alignment 
+(with the query) E-value, scores, and pattern position.
+<blockquote>
+seedtop -k pattern.txt -d refseq_protein -p patseedp -o pat_db.out -i query_aa.txt<br />
+<br />
+&nbsp;1 occurrence(s) of pattern in query<br />
+<br /> 
+Name Cyclic nucleotide-binding domain signature 2.<br />
+Pattern [LIVMF]-G-E-x-[GAS]-[LIVM]-x(5,11)-R-[STAQ]-A-x-[LIVMA]-x-[STACV].<br />
+&nbsp;At position 488 of query sequence<br />
+effective database length=3.1e+008<br />
+&nbsp;pattern probability=3.4e-008<br />
+lengthXprobability=1.0e+001<br />
+<br />
+Number of occurrences of pattern in the database is 265<br />
+892602  gi|33859524|ref|NP_034048.1|<br />
+0 Total Score 3279 Outside Pattern Score 3162 Match start in db seq 488<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extent in query seq 1 631 Extent in db seq 1 631<br />
+<br />
+1 occurrence(s) of pattern in query<br />
+<br />
+Name  Cyclic nucleotide-binding domain signature 1<br />
+Pattern [LIVM]-[VIC]-x-{H}-G-[DENQTA]-x-[GAC]-{L}-x-[LIVMFY](4)-x(2)-G<br />
+&nbsp;At position 450 of query sequence<br />
+effective database length=3.1e+008<br />
+&nbsp;pattern probability=7.0e-008<br />
+&nbsp;lengthXprobability=2.2e+001<br />
+<br /> 
+Number of occurrences of pattern in the database is 247<br />
+892602  gi|33859524|ref|NP_034048.1|<br />
+0 Total Score 3279 Outside Pattern Score 3188 Match start in db seq 450<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Extent in query seq 1 631 Extent in db seq 1 631
+</blockquote>
+<p/>
+The input pattern.txt file contains two patterns, so the result contains two 
+sections, one for each pattern. Only one database match is shown.
+</td></tr>
+
+<tr><td class="tbl_title"><a name="4.5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.5. seedp</a></td></tr>
+<tr><td>
+This function is similar to patseedp. The only difference is that the pattern 
+file should specify the pattern position in the input query sequence. The output from 
+the patternp can be used for this purpose. This specifies which pattern is to be used 
+during the search. 
+<p/>
+An actual command line and pattern file is listed below. Output is omitted since
+it is essential the same as that from patseedp given above.
+<blockquote>
+seedtop -p seedp -k pattern2a.txt -d refseq_protein -i q_aa.txt  -o seed.out<br />
+<br />
+ID  Cyclic nucleotide-binding domain signature 1<br />
+PA  [LIVM]-[VIC]-x-{H}-G-[DENQTA]-x-[GAC]-{L}-x-[LIVMFY](4)-x(2)-G<br />
+HI (450 451) (453 455) (457 458) (460 463) (466 466)<br />
+</blockquote>
+<p/>
+The seedp functionality has been incorporated into standalone blastpgp, on the 
+BLAST web server, it is called Pattern-Hit-Initiated BLAST or PHI-BLAST. The differences 
+are that blastpgp does not report the total number of pattern occurrences in the database, 
+but it does generate actual sequence alignments. The implementation in blastpgp provides 
+more functionality in that the results of the (first) round of PHI-BLAST search can be 
+used seamlessly as the start of a PSI-BLAST iterated search.
+</td></tr>
+
+<tr><td class="tbl_title"><a name="4.6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.6. For nucleotide searches</a></td></tr>
+<tr><td>
+Search for nucleotide patterns using seedtop is very similar to what described
+above for proteins queries. The function names for nucleotide have no terminating p.
+<p/>
+</td></tr>
+
+<tr><td class="tbl_title"><a name="5">5. Technical Support</a></td></tr>
+<tr><td>
+For additional questions and comments, please write to:
+<blockquote>
+<a href="mailto:blast-help@ncbi.nlm.nih.gov">blast-help@ncbi.nlm.nih.gov</a>
+</blockquote>
+Questions and inquries on other NCBI resources should be sent to:
+<blockquote>
+<a href="mailto:info@ncbi.nlm.nih.gov">info@ncbi.nlm.nih.gov</a>
+</blockquote>
+</td></tr>
+
+<tr><td align="right" class="medium2"><script type="text/javascript">
+//<![CDATA[
+document.write("Updated on "); document.write(document.lastModified);
+//]]>
+</script></td></tr>
+</tbody>
+</table>
+</body>
+</html>

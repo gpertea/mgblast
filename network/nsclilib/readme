@@ -1,0 +1,9 @@
+Please refer to doc/dispatcher.html or
+http://www.ncbi.nlm.nih.gov/IEB/ToolBox/NETWORK/dispatcher.html
+for more information on how to fine tune NCBI service dispatcher.
+
+Please note that most of the code from this directory is now abandoned,
+not supported, and should not be used.
+
+The only dispatcher that is supported is the SERVICE dispatcher
+that is described in the mentioned documents.

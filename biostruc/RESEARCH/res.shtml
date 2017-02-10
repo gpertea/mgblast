@@ -1,0 +1,263 @@
+<html>
+  <head>
+    <!-- $Id: res.shtml,v 1.1 2005/08/02 15:04:18 chenj Exp $ -->
+    <!-- $Log: res.shtml,v $
+    <!-- Revision 1.1  2005/08/02 15:04:18  chenj
+    <!-- new linux version on structure1/2
+    <!-- -->
+    <title> NCBI Structure Group Research </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <META NAME="keywords" CONTENT="NCBI Structure Cn3D VAST Threading MMDB PKB CN3D cn3d">
+    <META NAME="description" CONTENT="Summary of research activities for the NCBI Structure Group">
+    <link rel="stylesheet" href="http://www.ncbi.nlm.nih.gov/ncbi.css">
+  </head>
+
+  <body bgcolor="#FFFFFF" background="http://www.ncbi.nlm.nih.gov/corehtml/bkgd.gif" text="#000000" link="#CC6600" vlink="#CC6600">
+
+<!--  the header   --> 
+    <table border="0" width="600" cellspacing="0" cellpadding="0">
+      <tr> 
+        <td width="140"><a href="http://www.ncbi.nlm.nih.gov">
+          <img src="http://www.ncbi.nlm.nih.gov/corehtml/left.GIF" width="130" height="45" border="0"></a>
+        </td>
+	<td width="9"><img src="http://www.ncbi.nlm.nih.gov/corehtml/spacer10.GIF" width="9" height="1" border="0">
+	</td>
+        <td WIDTH="460" valign="BOTTOM">
+          <div align=right>
+          <a href="/Structure">
+          <img SRC="http://www.ncbi.nlm.nih.gov/Structure/GIFS/research.gif" border=0 height=70 width=458 ALT="NCBI Structure Research logo">
+        </a></div></td>
+        <td width="100" valign="BOTTOM"></td>
+      </tr>
+    </table>
+
+<!--  the quicklinks bar   --> 
+    <table border="0" width="600" cellspacing="0" cellpadding="1" bgcolor="#003366">
+      <!--#include virtual="/Structure/Components/quicklinks.htmlf" -->
+<!-- the search bar -->
+      <!--#include virtual="/Structure/Components/searchbar.htmlf" -->
+    </table>
+
+<!--  the contents   --> 
+    <table border="0" width="600" cellspacing="0" cellpadding="0">
+      <tr valign="TOP"> 
+<!--  left column   --> 
+        <td width="125"> 
+          <br>
+<!-- STRUCTURE LINKS -->
+          <p class="GUTTER1"><a href="casp3/index.shtml" class="GUTTER1"><B>CASP3</B></a></p>
+          <p class="GUTTER2">1998 Structure prediction experiment</p>
+
+          <p class="GUTTER1"><a href="http://www.ncbi.nlm.nih.gov/Structure/RESEARCH/casp2/index.html" class="GUTTER1"><B>CASP2</B></a></p>
+          <p class="GUTTER2">1996 Structure prediction experiment</p>
+
+          <p class="GUTTER1"><a href="http://www.ncbi.nlm.nih.gov/Structure/RESEARCH/threading.shtml" class="GUTTER1"><B>Threading</B></a></p>
+          <p class="GUTTER2">Protein Fold Recognition</p>
+          <hr>
+          <!--#include virtual="/Structure/Components/mmdblink.htmlf" -->
+          <!--#include virtual="/Structure/Components/pdbeastlink.htmlf" -->
+          <!--#include virtual="/Structure/Components/cn3dlink.htmlf" -->
+          <!--#include virtual="/Structure/Components/vastlink.htmlf" -->
+          <!--#include virtual="/Structure/Components/vastsearchlink.htmlf" -->
+          <!--#include virtual="/Structure/Components/cddlink.htmlf" -->
+        </td>
+<!-- extra column to force things over the gif border --> 
+        <td width="15" rowspan=2><img src="http://www.ncbi.nlm.nih.gov/corehtml/spacer10.GIF" width="15" height="1" border="0"> </td>
+
+<!-- right content column  --> 
+        <td width="320" CLASS="TEXT" rowspan=2> 
+          <br>   
+          <table border="0" width="320" cellspacing="0" cellpadding="0">
+            <tr> 
+              <td width="320" bgcolor="#CCCCFF" class="H4"><img src="http://www.ncbi.nlm.nih.gov/corehtml/bluebullet.gif" width="16" height="14" border="0">
+              Structure Group Research</td>
+            </tr>
+          </table>
+
+          <p class="TEXT">
+            <strong>Senior Investigator:  Stephen H. Bryant</strong><p> 
+            <DL>
+              <DT>Affiliation:  
+              <DD>Computational Biology Branch,<br>
+                  National Center for Biotechnology Information (NCBI),
+                  National Library of Medicine (NLM).<br> 
+                  Contact:  Dr. S. H. Bryant, Bldg. 38A, Room 5S504,
+                  NLM, NIH, 8600 Rockville Pike, Bethesda, MD  20894.<br>
+                  Tel:  (301) 435-7792<br>
+                  Fax:  (301) 480-9241<br>
+                  email <a href="mailto:bryant@ncbi.nlm.nih.gov">bryant@ncbi.nlm.nih.gov</a>
+            </dl>
+          </p>
+
+          <table border="0" width="320" bgcolor="#ffffcc" cellspacing="0" cellpadding="2">
+            <tr valign="MIDDLE">
+              <td width="320" bgcolor="#ffffcc" class="TEXT"> 
+                 <strong>Comparative macromolecular 3D-structure analysis</strong><p> 
+                 <a href="/Structure/CN3D/cn3d.shtml">Cn3D</a>: Visualization of 3D structures
+                 and alignments<p> 
+                 <a href="/Structure/MMDB/mmdb.shtml">MMDB</a>:
+                 "Computer-friendly" structure database<p> 
+                 <a href="/Structure/RESEARCH/threading.shtml">Threading</a>:
+                 Algorithms for protein fold recognition<p> 
+                 <a href="/Structure/VAST/vast.shtml">VAST</a>:
+                 Protein structure-structure comparisons<p>
+		 <a href="/Structure/cdd/cdd.shtml">CDD</a>:
+		 A Conserved Domain Database<p>
+                 <a href="http://www.ncbi.nlm.nih.gov:80/entrez/query.fcgi?db=Structure">Entrez3D</a>:
+                 WWW-retrieval tools for all of the above<p>
+              </td>
+            </tr>
+          </table>
+          <p class="SMALL1"><strong>Selected Online Publications:</strong></p>
+          <p class="SMALL1">Wang Y, Anderson JB, Chen J, Geer LY, He S, Hurwitz DI, Liebert CA,
+	    Madej T, Marchler GH, Marchler-Bauer A, Panchenko AR, Shoemaker BA, Song JS, Thiessen PA,
+	    Yamashita RA, Bryant SH. 
+	    <a href="http://nar.oupjournals.org/cgi/content/full/30/1/249?ijkey=iGxcC9hHh9esk&keytype=ref&siteid=nar">MMDB: Entrez's 3D-structure database.</a>
+	    Nucleic Acids Res 2002; 30:249-252.
+	  </p>
+	  <p class="SMALL1">Marchler-Bauer A, Panchenko AR,
+	    Shoemaker BA, Thiessen PA, Geer LY, Bryant SH. 
+	    <a href="http://nar.oupjournals.org/cgi/content/full/30/1/281?ijkey=cZeqTjmJjx4xQ&keytype=ref&siteid=nar">CDD: a database of conserved domain alignments with
+            links to domain three-dimensional structure.</a>
+	    Nucleic Acids Res 2002; 30:281-283.
+	  </p>
+          <p class="SMALL1">Wang Y, Addess KJ, Geer L, Madej T, Marchler-Bauer A, Zimmerman D, Bryant SH. 
+            <a href="/Structure/MMDB/nar/gkd066_gml.html">MMDB: 3D structure data in Entrez.</a>
+	    Nucleic Acids Res 2000; 28:243-245. </p>
+          <p class="SMALL1">Panchenko A, Marchler-Bauer A, Bryant SH. 
+            <a href="/Structure/RESEARCH/casp3/pap.html">Threading with Explicit Models for Evolutionary Conservation of Structure and Sequence.</a>
+	    Proteins Suppl 1999; 3:133-140.</p>
+          <p class="SMALL1">
+            Marchler-Bauer A, Addess KJ, Chappey C, Geer L, Madej T, Matsuo Y, Wang Y, Bryant SH.
+	    <a href="/Structure/MMDB/nar/gkc102_gml.html">MMDB: Entrez's 3D structure database.</a>
+	  Nucleic Acids Res 1999; 27:240-243.</p>
+          <p class="SMALL1">
+            Hogue CWV. <a href="cn3dtibs.html">
+            Cn3D: a new generation of three-dimensional molecular structure viewer.</a>
+	    Trends Biochem Sci 1997; 22:314-316.</p>
+          <p class="SMALL1">
+            Marchler-Bauer A, Bryant SH. 
+            <a href="casptibs.html">A measure of success in fold recognition.</a>
+	    Trends Biochem Sci 1997; 22:236-240.</p>
+          <p class="SMALL1">
+            Hogue CWV, Ohkawa H, Bryant SH.
+            <a href="chtibs.html">
+             A dynamic look at structures: WWW-Entrez and the molecular modeling database.</a>
+	     Trends Biochem. Sci 1996; 21:226-229.</p>
+
+        </td>
+
+<!-- extra column to force things over the gif border --> 
+        <td width="15" rowspan=2><img src="http://www.ncbi.nlm.nih.gov/corehtml/spacer10.GIF" width="15" height="1" border="0"> </td>
+
+<!-- left hand column -->
+        <td class="TEXT" width=125>
+          <br>
+          <TABLE WIDTH="125" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+            <TR><TD ALIGN=CENTER BGCOLOR="#003366" CLASS="TEXT" height="17"><FONT COLOR="FFFFFF">
+            see also:</FONT></TD></TR>
+          </TABLE>
+          <p class="TEXT">
+
+          <table border="0" width="125" bgcolor="#ffffcc" cellspacing="0" cellpadding="3" class="TEXT">
+            <tr valign="MIDDLE">
+              <td width="125" bgcolor="#ffffcc" class="SMALL1">
+                 1995: Successful  
+                 <a href="http://www.ncbi.nlm.nih.gov/Structure/RESEARCH/leptin.html">Leptin structure prediction</a>
+              </td>
+            </tr>
+          </table>
+
+          <p class="SMALL1"><strong>Personnel</strong> (Click on link to send E-mail):</P>
+          <p class="SMALL1">
+            <a href="mailto:madej@ncbi.nlm.nih.gov">Tom Madej</a><br>
+            <a href="mailto:bauer@ncbi.nlm.nih.gov">Aron Marchler-Bauer</a><br>
+            <a href="mailto:ywang@ncbi.nlm.nih.gov">Yanli Wang</a><br>
+            <a href="mailto:panch@ncbi.nlm.nih.gov">Anna Panchenko</a><br>
+            <a href="about:">Lewis Geer</a><br>
+            <a href="mailto:chenj@ncbi.nlm.nih.gov">Jie Chen</a><br>
+            <a href="mailto:thiessen@ncbi.nlm.nih.gov">Paul Thiessen</a><br>
+            <a href="mailto:hurwitz@ncbi.nlm.nih.gov">David Hurwitz</a><br>
+            <a href="mailto:shoemake@ncbi.nlm.nih.gov">Ben Shoemaker</a><br>
+	    <a href="mailto:he@ncbi.nlm.nih.gov">Siqian He</a><br>
+	    <a href="mailto:sefcovic@ncbi.nlm.nih.gov">Natasha Sefcovic</a><br>
+	    <a href="mailto:anderson@ncbi.nlm.nih.gov">John Anderson</a><br>
+	    <a href="mailto:ryamashi@ncbi.nlm.nih.gov">Roxanne Yamashita</a><br>
+	    <a href="mailto:liebert@ncbi.nlm.nih.gov">Cynthia Liebert</a><br>
+	    <a href="mailto:song@ncbi.nlm.nih.gov">James Song</a><br>
+	    <a href="mailto:marchler@ncbi.nlm.nih.gov">Gabriele Marchler</a><br>
+	    <a href="mailto:kann@ncbi.nlm.nih.gov">Maricel Kann</a><br>
+	    <a href="mailto:tsang@ncbi.nlm.nih.gov">Hsin-Yi Tsang</a><br>
+	    <a href="mailto:scott@ncbi.nlm.nih.gov">Carol DeWeese-Scott</a><br>
+	    <a href="mailto:lanczyck@ncbi.nlm.nih.gov">Christopher Lanczycki</a><br>
+	    <a href="mailto:jjackson@ncbi.nlm.nih.gov">John Jackson</a><br>
+	    <a href="mailto:cliu@ncbi.nlm.nih.gov">Chunlei Liu</a><br>
+	    <a href="mailto:yin@ncbi.nlm.nih.gov">Jodie Yin</a><br>
+	    <a href="mailto:simonyan@ncbi.nlm.nih.gov">Vahan Simonyan</a>
+	    <a href="mailto:thompson@ncbi.nlm.nih.gov">Kenneth Evan Thompson</a><br>
+	    <a href="mailto:mxu@ncbi.nlm.nih.gov">Ming Xu</a><br>
+	    <a href="mailto:cherukur@ncbi.nlm.nih.gov">Praveen Cherukuri</a><br>
+	    <a href="mailto:bolton@ncbi.nlm.nih.gov">Evan Bolton</a><br>
+	    <a href="mailto:ihlenfel@ncbi.nlm.nih.gov">Wolf-Dietrich Ihlenfeldt</a><br>
+	    <a href="mailto:jiazhang@ncbi.nlm.nih.gov">Jeff Zhang</a><br>
+	    <a href="mailto:jahe@ncbi.nlm.nih.gov">Jane He</a><br>
+	    <a href="mailto:shlu@ncbi.nlm.nih.gov">Shennan Lu</a><br>
+	    <a href="mailto:jxiao@ncbi.nlm.nih.gov">Jewen Xiao</a><br>
+	    <a href="mailto:dzhang@ncbi.nlm.nih.gov">Dachuan Zhang</a><br>
+	    <a href="mailto:gwadz@ncbi.nlm.nih.gov">Marc Gwadz</a><br>
+	    <a href="mailto:mullokan@ncbi.nlm.nih.gov">Mikhail Mullokandov</a><br>
+	    <a href="mailto:fulu@ncbi.nlm.nih.gov">Fu Lu</a><br>
+	    <a href="mailto:chakraba@ncbi.nlm.nih.gov">Saikat Chakrabarti</a><br>
+	    <a href="mailto:zke@ncbi.nlm.nih.gov">Zhaoxi Ke</a><br>
+	    <a href="mailto:hao@ncbi.nlm.nih.gov">Luning Hao</a><br>
+	    <a href="mailto:derbyshi@ncbi.nlm.nih.gov">Myra Derbyshire</a><br>
+	    <a href="mailto:ngau@ncbi.nlm.nih.gov">Abby Ngau</a>
+	    	      <img src="http://www.ncbi.nlm.nih.gov/Structure/GIFS/new.gif" BORDER=0 ALT="NEW!"><br>
+	    <a href="mailto:gonzalen@ncbi.nlm.nih.gov">Noreen Gonzales</a>
+	    	      <img src="http://www.ncbi.nlm.nih.gov/Structure/GIFS/new.gif" BORDER=0 ALT="NEW!">
+          </p>
+
+          <p class="SMALL1"><strong>Structure Group Alumni</strong> <a href="http://www.ncbi.nlm.nih.gov/Structure/MISC/alumni.html">(addresses)</a>:</p>
+          <p class="SMALL1">
+            <a href="mailto:major@IRO.UMontreal.CA">Francois Major</a><br>
+            <a href="mailto:gibrat@proline.jouy.inra.fr">Jean-Francois Gibrat</a><br>
+            <a href="mailto:hitomi.ohkawa@roche.com">Hitomi Ohkawa</a><br>
+            <a href="mailto:hogue@mshri.on.ca">Christopher Hogue</a><br>
+            <a href="mailto:qiuwei_xu@merck.com">Qiuwei Xu</a><br>
+            <a href="mailto:matsuo@jota.riken.go.jp">Yo Matsuo</a><br>
+            <a href="mailto:WEI.DING@spcorp.com">Wei Ding</a><br>
+            <a href="mailto:addess@sdsc.edu">Ken Addess</a><br>
+            <a href="mailto:ariel@iibr.gov.il">Naomi Ariel</a></br>
+            <a href="mailto:dzimmerman@nwsti.com">Diane Zimmerman</a><br>
+	    <a href="mailto:ann2@georgetown.edu">Anastasia Nikolskaya</a><br>
+	    <a href="mailto:rm285@georgetown.edu">Raja Mazumder</a><br>
+	    <a href="about:">Natalie Fedorova</a><br>
+	    <a href="about:">Aviva Jacobs</a><br>
+	    <a href="mailto:sv67@georgetown.edu">Sona Vasudevan</a><br>
+	    <a href="about:">B. Sridhar Rao</a>
+          </p>
+
+          <!--#include virtual="/Structure/Components/pubmedcit.htmlf" -->
+
+          <br>
+        </td>
+      </tr>
+        <td width="125">
+          <hr>
+          <!--#config timefmt="%m/%d/%y" -->
+          <p class="GUTTER2">Updated <!--#echo var="LAST_MODIFIED"--></p>
+        </td>
+        <td width="125">
+          <!--#include virtual="/Structure/Components/bottomlinks.htmlf" -->
+        </td>
+      </tr>
+    </table>
+ <!--  end of content  -->  
+    &nbsp;
+
+ <!--  bottom navigation bar  -->  
+
+    <!--#include virtual="/Structure/Components/bottombar.htmlf" -->
+
+  </body>
+</html>

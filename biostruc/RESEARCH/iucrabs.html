@@ -1,0 +1,165 @@
+<html>
+<!-- $Id: iucrabs.html,v 1.1 2005/08/02 15:04:18 chenj Exp $ -->
+<!-- $Log: iucrabs.html,v $
+<!-- Revision 1.1  2005/08/02 15:04:18  chenj
+<!-- new linux version on structure1/2
+<!-- -->
+<titleBryant and Hogue: Structureal Neighbors and Structural Alignments...</title>
+<body bgcolor = "f0f0f0">
+<A HREF="http://www.ncbi.nlm.nih.gov">
+<iMG SRC="StaffPub.gif" BORDER=0>
+</A>
+
+
+<h2>Structural Neighbors and Structural Alignments: The Science Behind Entrez/3D</h2>
+<h3>Stephen H. Bryant and Christopher W.V. Hogue </h3>
+<h3>Presented at the IUCr Macromolecular Crystallography Computing School, August, 1996</h3> 
+
+
+<i>Computational Biology Branch, National Center for Biotechnology Information, National 
+Institutes of Health, 8600 Rockville Pike, Bethesda, MD 20894 USA</i>
+<hr>
+
+<br>
+<br>
+<a href="http://www4.ncbi.nlm.nih.gov/Entrez/">Entrez</a> is an Internet tool for retrieval 
+of information on the structure and function of biological macromolecules 
+[<A HREF="#Ref_1">1</A>,<A HREF="#Ref_2">2</A>] (http://www4.ncbi.nlm.nih.gov/Entrez/). It provides 
+daily-updated databases of molecular sequences, three-dimensional structures, and the Medline 
+citations pertaining to molecular genetics. With simple term matching queries one 
+may easily retrieve information on a molecule of interest from any of these sources. One 
+may also easily "link" between databases, to retrieve, for example, the Medline citations 
+contained within a molecular sequence or structure report.<p>
+<br>
+Entrez's most powerful source of information on molecular structure and function, however, 
+is provided by its "neighbor" database. The neighbors of a sequence are its 
+homologs, as identified by a significant similarity score using the 
+<a href="http://www.ncbi.nlm.nih.gov/BLAST/">BLAST</a> algorithm[<A HREF="#Ref_3">3</A>]. The 
+neighbors of a Medline citation are articles which use surprisingly similar terms in their title 
+and abstract[<A HREF="#Ref_4">4</A>]. Since biological functions are often conserved among members of a 
+homology group, and/or described in the associated Medline abstracts, one may easily 
+explore the structure-function relationships of an entire protein family by traversing these 
+neighbor relationships.<p>
+<br>
+Structural neighbor information in Entrez is based on a direct comparison of 3D structure. 
+All of the roughly 10,000 domain substructures within the current Protein Data Bank[<A HREF="#Ref_5">5</A>] 
+have been compared to one another using the 
+<a href="http://www.ncbi.nlm.nih.gov/Structure/VAST/vast.html">VAST</a> 
+algorithm[<A HREF="#Ref_6">6</A>,<A HREF="#Ref_7">7</A>], and the structure-
+structure alignments and superpositions recorded. The VAST algorithm, for 
+"Vector Alignment Search Tool", places great emphasis on the definition of the threshold of significant 
+structural similarity. By focusing on similarities that are surprising in the statistical sense, 
+one does not waste time examining many similarities of small substructures that occur by 
+chance in protein structure comparison. Very many of the remaining similarities are examples 
+of remote homology, often undetectable by sequence comparison. As such they may 
+provide a broader view of the structure, function and evolution of a protein family.<p>
+<br>
+At the heart of VAST's significance calculation is definition of the "unit" of tertiary structure 
+similarity as pairs of secondary structure elements (SSE's) that have similar type, relative 
+orientation, and connectivity. In comparing two protein domains the most surprising substructure similarity is that where the sum of superposition scores across these "units" is 
+greatest. The likelihood that this similarity would be seen by chance is then given as a simple 
+product: the probability that one would obtain this score in drawing so many "units" at 
+random, times the number of alternative SSE-pair combinations possible in the domain 
+comparison, from which one has chosen the best. In practice one finds that the VAST 
+significance threshold identifies similarities that span a sizable fraction of the structures 
+compared, and it would appear that this theory corresponds to the subjective criteria long 
+employed by crystallographers.<p>
+<br>
+In addition to a listing of similar structures, neighbors within the Entrez 3D structure 
+database contain detailed residue-by-residue alignments and transformation matrices for 
+structural superposition. Alternative alignments are examined using a Gibbs sampling 
+algorithm, beginning from the "seed" SSE-pair alignment. The optimal alignment is 
+defined as that which is most surprising relative to the background distribution of 
+alpha-carbon superposition residuals one obtains by chance drawing structural fragments at 
+random. This definition provides an objective criterion with which to balance the 
+well-known trade-off of lower superposition residuals versus more aligned residues. In practice 
+refined alignments from VAST appear conservative, choosing a highly similar "core" 
+substructure. In this superposition one easily identifies regions where protein evolution has 
+modified the structure.<p>
+<br>
+Structural neighbor calculations for Entrez are based on the 
+<a href="http://www.ncbi.nlm.nih.gov/Structure/MMDB/struchelp.html">MMDB</a> database
+[<A HREF="#Ref_2">2</A>,
+<A HREF="#Ref_8">8</A>] (<a href="http://www.ncbi.nlm.nih.gov/Structure/">http://
+www.ncbi.nlm.nih.gov/Structure/</a>), a validated version of the Protein Data Bank in a 
+computer-friendly form suitable for comparative analysis. Structural neighbors are presented 
+via 3D molecular graphic images, using the 
+<a href="http://www.ncbi.nlm.nih.gov/Structure/CN3D/cn3d.html">Cn3D</a> viewer that is distributed as part of the 
+Entrez client software. Cn3D operates on a variety of computer platforms, including 
+MacIntosh, Windows and Unix, and it provides a variety of algorithmic rendering schemes 
+suitable for visualization of structural superpositions. Structure superposition data may 
+also be easily exported from Entrez, most simply by writing PDB-format files rotated to the 
+reference frame of a neighbor. In this way Entrez may serve as a starting point for detailed 
+comparative analysis by structural biologists using other software to examine the patterns 
+of structural conservation and change within a protein family.<p>
+<br>
+<br>
+<b>References:</b>
+
+<ol>
+
+<li><A NAME="Ref_1">Schuler, G.D., Epstein, J.A., Ohkawa, H. and Kans J.A. (1996)
+Entrez: Molecular biology database and 
+retrieval system.<i>
+ Methods Enzymol.</i> 266, 141-162.
+
+<li><A NAME="Ref_2">Hogue C.W.V., Ohkawa H., and Bryant, S.H. (1996)  
+<a href="chtibs.html">
+A dynamic look at structures: WWW-Entrez and the molecular modeling database.</a>
+<i>Trends Biochem Sci. 1996</i>, 21, 226-229
+
+<li><A NAME="Ref_3">Altshul, S.F., Gish W., Miller W., Myers E.W., Lipman D.J. (1990) Basic
+local alignment search tool.
+<a href="http://www4.ncbi.nlm.nih.gov:80/htbin-post/Entrez/query?uid=91039304&form=6&db=m&Dopt=r">
+ J. Mol. Biol, 215, 403-410.
+</a>.
+
+
+<li><A NAME="Ref4"> Wilbur, W.J., Yang Y.(1996)
+An analysis of statistical term strength and its use in the indexing 
+and retrieval of molecular biology texts. <i>Comput. Biol. Med. 1996</i>, 26:209-222.
+
+
+<li>Abola, E.E., Bernstein, F.C., Bryant, S.H., Koetzle, T.F., Weng, J.C. (1987)
+Protein data bank. In Crys-
+tallographic databases: information content, software systems, scientific applications. 
+ Edited by Allen FH, Bergerhoff, G, Sievers R. Bonn, Chester, Cambridge: <i>International 
+Union of Crystallography </i> 107-132.
+
+<li><A NAME="Ref_6">Madej, T., Gibrat, J-F., and Bryant, S.H. (1995) 
+Threading a database of protein cores. <i>
+Protein Struct. Funct. Genet.</i> 23 356-369.
+
+<li><A NAME="Ref_7">Gibrat, J-F., Madej, T., Bryant, S.H. (1996)
+Surprising similarities in structure comparison. <i>Current 
+Opinion in Structural Biology.</i> 6, 377-385.
+
+<li><A NAME="Ref_7">Ohkawa, H., Ostell, J., Bryant, S. (1995)
+<a href="http://www4.ncbi.nlm.nih.gov:80/htbin-post/Entrez/query?uid=96038927&form=6&db=m&Dopt=r">
+MMDB: An ASN.1 specification for macromolecular 
+structure.</a> <i>ISMB</i> 3, 259-267.
+ 
+</ol>
+ 
+<br>
+
+<hr>
+
+<A HREF="http://www.ncbi.nlm.nih.gov/Structure">
+<img src="strugp.gif" BORDER=0 alt="Structure Group">
+<br>
+</a>
+
+
+<br><br>
+Rev. 17 Feb 1997
+<hr>
+<A HREF="http://www.ncbi.nlm.nih.gov/"><img 
+src="ncbi_button.gif" alt="NCBI Home"></A>
+<A HREF="http://www.ncbi.nlm.nih.gov/Web/Research/Papers/index.html"><img
+src="staffpb.gif" alt="Staff Papers"></A>
+
+
+</a><p>
+</body>
+</html>
